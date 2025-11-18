@@ -160,12 +160,22 @@ footer {
 
 /* Bulleted list style */
 .participants-list {
-  list-style: disc;
-  padding-left: 20px;
+  list-style: none;
+  padding-left: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
+/* Delete icon style */
+.delete-icon {
+  color: #c62828;
+  font-size: 16px;
+  margin-left: 8px;
+  transition: color 0.2s;
+}
+.delete-icon:hover {
+  color: #b71c1c;
+}
 }
 
 .participant-item {

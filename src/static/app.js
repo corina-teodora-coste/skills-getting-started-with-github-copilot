@@ -58,8 +58,42 @@ document.addEventListener("DOMContentLoaded", () => {
             emailSpan.className = "participant-email";
             emailSpan.textContent = " " + pEmail;
 
+            // Add delete icon
+            const deleteIcon = document.createElement("span");
+            deleteIcon.className = "delete-icon";
+            deleteIcon.title = "Unregister participant";
+            deleteIcon.innerHTML = "&#128465;"; // Unicode trash can
+            deleteIcon.style.cursor = "pointer";
+            deleteIcon.style.marginLeft = "8px";
+            deleteIcon.addEventListener("click", async (e) => {
+              e.stopPropagation();
+              // Call unregister API
+              try {
+                const response = await fetch(`/activities/${encodeURIComponent(name)}/unregister?email=${encodeURIComponent(pEmail)}`, {
+                  method: "POST"
+                });
+                const result = await response.json();
+                if (response.ok) {
+                  messageDiv.textContent = result.message || "Participant unregistered.";
+                  messageDiv.className = "message success";
+                  fetchActivities();
+                } else {
+                  messageDiv.textContent = result.detail || "Failed to unregister participant.";
+                  messageDiv.className = "message error";
+                }
+                messageDiv.classList.remove("hidden");
+                setTimeout(() => { messageDiv.classList.add("hidden"); }, 5000);
+              } catch (error) {
+                messageDiv.textContent = "Error unregistering participant.";
+                messageDiv.className = "message error";
+                messageDiv.classList.remove("hidden");
+                setTimeout(() => { messageDiv.classList.add("hidden"); }, 5000);
+              }
+            });
+
             li.appendChild(badge);
             li.appendChild(emailSpan);
+            li.appendChild(deleteIcon);
             participantsList.appendChild(li);
           });
         } else {
