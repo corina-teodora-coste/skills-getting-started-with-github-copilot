@@ -63,6 +63,8 @@ section h3 {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f9f9f9;
+  /* subtle gradient for depth */
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(249,249,249,0.6));
 }
 
 .activity-card h4 {
@@ -114,13 +116,13 @@ button:hover {
   border-radius: 4px;
 }
 
-.success {
+.message.success {
   background-color: #e8f5e9;
   color: #2e7d32;
   border: 1px solid #a5d6a7;
 }
 
-.error {
+.message.error {
   background-color: #ffebee;
   color: #c62828;
   border: 1px solid #ef9a9a;
@@ -141,4 +143,75 @@ footer {
   margin-top: 30px;
   padding: 20px;
   color: #666;
+}
+
+/* Participants section */
+.participants {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed #eee;
+}
+
+.participants h5 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #1a237e;
+}
+
+/* Bulleted list style */
+.participants-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+/* Delete icon style */
+.delete-icon {
+  color: #c62828;
+  font-size: 16px;
+  margin-left: 8px;
+  transition: color 0.2s;
+}
+.delete-icon:hover {
+  color: #b71c1c;
+}
+}
+
+.participant-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Badge with initials */
+.participant-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #3949ab, #1a237e);
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+/* Email text */
+.participant-email {
+  color: #444;
+  font-size: 13px;
+  word-break: break-all;
+}
+
+/* Empty list hint */
+.participant-empty {
+  color: #666;
+  font-style: italic;
+  font-size: 13px;
 }
